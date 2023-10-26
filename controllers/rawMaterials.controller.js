@@ -1,5 +1,6 @@
 const RawMaterials = require('../models/rawMaterials');
 
+// check if certain product code exists in collection
 exports.checkIfMaterialExists = async (req, res, next) => {
     try {
         const result = await RawMaterials.find({productCode:req.body.productCode});
@@ -15,6 +16,7 @@ exports.checkIfMaterialExists = async (req, res, next) => {
     }
 }
 
+// retrieve list of all documents in this collection
 exports.getRawMaterials = async (req, res, next) => {
     try {
         const result = await RawMaterials.find();
@@ -25,6 +27,7 @@ exports.getRawMaterials = async (req, res, next) => {
     }
 }
 
+// update document in the raw materials collection
 exports.updateRawMaterial = async (req, res) => {
     try {
         const newQuantity = req.body.quantity + req.quantity;
@@ -36,6 +39,7 @@ exports.updateRawMaterial = async (req, res) => {
     }
 }
 
+// check if enough materials are available for production
 exports.checkIfEnough = async (req, res, next) => {
     try {
         for (const key in req.composition) {
@@ -53,6 +57,7 @@ exports.checkIfEnough = async (req, res, next) => {
     
 }
 
+// reduce quantity field in document of raw materials collections
 exports.useRawMaterials = async (req, res, next) =>{
     try {
         for (const key in req.composition) {

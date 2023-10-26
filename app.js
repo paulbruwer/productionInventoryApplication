@@ -4,13 +4,17 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bodyParser = require('body-parser');
 
+// define routes
 var indexRouter = require('./routes/index');
 var receivingRouter = require('./routes/receiving');
 var productionRouter = require('./routes/production');
 var dispatchRouter = require('./routes/dispatch');
 var adminRouter = require("./routes/admin");
 
+// connect to database
 const { dbConnect } = require('./utils/dbConnect');
+
+// import middleware
 const { checkJWTToken, checkReceivingPermission, checkProductionPermission, checkDispatchPermission, checkAdminPermission } = require('./routes/middelware');
 
 var app = express();
@@ -27,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
+// define route behavior
 app.use('/', indexRouter);
 app.use('/receiving', checkJWTToken, checkReceivingPermission, receivingRouter);
 app.use('/production', checkJWTToken, checkProductionPermission, productionRouter);

@@ -1,5 +1,6 @@
 const Manufacture = require("../models/manufacture");
 
+// retrieve list of all documents in this collection
 exports.getProductionData = async (req, res, next) => {
     try {
         const result = await Manufacture.find();
@@ -9,6 +10,7 @@ exports.getProductionData = async (req, res, next) => {
     }
 }
 
+// add document to collection
 exports.newProductionEntry = async (req, res, next) => {
     try {
         const newEntry = new Manufacture(req.body);
@@ -20,6 +22,7 @@ exports.newProductionEntry = async (req, res, next) => {
     }
 }
 
+// remove document from collection
 exports.deleteProduction = async (req,res) => {
     try {
         await Manufacture.deleteOne({batchNumber:req.body.batchNumber});

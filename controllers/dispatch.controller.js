@@ -1,5 +1,6 @@
 const Dispatch = require("../models/dispatch");
 
+// retrieve list of all documents in this collection
 exports.getDispatchData = async (req, res, next) => {
     try {
         const result = await Dispatch.find();
@@ -9,6 +10,7 @@ exports.getDispatchData = async (req, res, next) => {
     }
 }
 
+// add document to collection
 exports.newDispatchEntry = async (req, res) => {
     try {
         const dispatchNumber = req.body.dispatchNumber;
@@ -23,6 +25,7 @@ exports.newDispatchEntry = async (req, res) => {
     }
 }
 
+// remove document from collection
 exports.deleteDispatch = async (req,res) => {
     try {
         await Dispatch.deleteOne({dispatchNumber:req.body.dispatchNumber})

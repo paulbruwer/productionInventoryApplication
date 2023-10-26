@@ -32,6 +32,7 @@ function checkJWTToken(req, res, next) {
   }
 }
 
+//check the user has permissions for this route
 function checkReceivingPermission(req, res, next){
   req.permissions.map((element)=>{
       if (element === "/admin" || element === "/receiving"){
@@ -41,6 +42,7 @@ function checkReceivingPermission(req, res, next){
   })
 }
 
+//check the user has permissions for this route
 function checkProductionPermission(req, res, next){
   req.permissions.map((element)=>{
       if (element === "/admin" || element === "/production"){
@@ -50,6 +52,7 @@ function checkProductionPermission(req, res, next){
   })
 }
 
+//check the user has permissions for this route
 function checkDispatchPermission(req, res, next){
   req.permissions.map((element)=>{
       if (element === "/admin" || element === "/dispatch"){
@@ -59,6 +62,7 @@ function checkDispatchPermission(req, res, next){
   })
 }
 
+//check the user has permissions for this route
 function checkAdminPermission(req, res, next){
   req.permissions.map((element)=>{
       if (element === "/admin"){

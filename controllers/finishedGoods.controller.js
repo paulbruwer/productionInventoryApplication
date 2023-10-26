@@ -1,5 +1,6 @@
 const FinishedGoods = require('../models/finishedGoods');
 
+// check if certain product code exists in collection
 exports.checkIfGoodsExists = async (req, res, next) => {
     try {
         const result = await FinishedGoods.find({productCode:req.body.productCode});
@@ -15,6 +16,7 @@ exports.checkIfGoodsExists = async (req, res, next) => {
     }
 }
 
+// retrieve list of all documents in this collection
 exports.getFinishedGoods = async (req, res, next) => {
     try {
         const result = await FinishedGoods.find();
@@ -25,6 +27,7 @@ exports.getFinishedGoods = async (req, res, next) => {
     }
 }
 
+// update document in collection
 exports.updateFinishedGoods = async (req, res) => {
     try {
         const newQuantity = req.body.quantity + req.quantity;
@@ -36,6 +39,7 @@ exports.updateFinishedGoods = async (req, res) => {
     }
 }
 
+// retrieve the composition object from documents in the finished goods collection
 exports.getComposition = async (req, res, next) => {
     try {
         const result = await FinishedGoods.find({productCode:req.body.productCode});
@@ -48,6 +52,7 @@ exports.getComposition = async (req, res, next) => {
     }
 }
 
+// check if enough good are available for dispatch
 exports.checkIfEnough = async (req, res, next) => {
     try {
         for (const key in req.body.items) {
@@ -65,6 +70,7 @@ exports.checkIfEnough = async (req, res, next) => {
     
 }
 
+// reduce the quantity field inside a document of the finished goods collection when dispatching
 exports.dispatchFinishedGoods = async (req, res, next) =>{
     try {
         for (const key in req.body.items) {

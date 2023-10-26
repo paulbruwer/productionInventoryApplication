@@ -1,5 +1,6 @@
 const Users = require("../models/users");
 
+// check password upon login
 exports.matchPassword = async (req, res, next) => {
     try {
         const result = await Users.find({email:req.body.email});
