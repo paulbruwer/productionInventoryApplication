@@ -7,6 +7,52 @@ The app logs:
     Adding finished from production floor to stock
     and finished good dispatched from the stock.
 
+**Installation Guide For dev version**
+
+    - pull repo from github
+    - in command line navigate to repo location
+    - run "npm install" to install dependencies
+    - navigate to "frontend" folder
+    - run "npm install" to install frontend dependencies
+    - navigate back to route
+    - run "npm run dev" to start application
+
+For API security JSON WEB TOKEN is used with encryption key "secretKey".
+If you want to change this key navigate to /routes/middelware.js and change the key in both LoginUser and CheckJWTToken
+
+**Guide for use**
+
+From the home screen, log into the application. (test account username: paul@mail.com, password: 1234)
+
+Navigate the pages of choice using the tabs above:
+
+Receiving:
+    - Enter Batch number
+    - Select product code from the drop down
+    - Enter quantity
+    - Click Submit to add item
+
+Production:
+    - Enter Batch number
+    - Select Product code from the drop down
+    - Enter quantity
+    - Click submit to add item
+
+Dispatch:
+    - First select item from drop down
+    - enter a quantity for this item
+    - click add to add this item to the list
+    - repeat steps for any additional items on this dispatch action
+    - enter dispatch number last
+    - click submit to add to database
+    - click cancel to clear list
+
+Admin
+    - On the Left navigate to the data base collection from which you want to delete an item
+    - Enter the reference number (batch number or dispatch number) of the listed item
+    - click delete
+    - on the right navigate through all the collections of the database you want to view
+
 **System architecture**:
 
 This application will be developed using the MERN-stack, i.e. MongoDB, Express, React(Create React app), Node.
