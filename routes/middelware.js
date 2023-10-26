@@ -5,13 +5,13 @@ let jwt = require("jsonwebtoken");
 function loginUser(req, res) {
     let jwtToken = jwt.sign(
         {
-            username: req.body.username,
+            email: req.body.email,
             permissions: req.permissions,
         },
         "secretKey",
         { expiresIn: "1h" }
         );
-    res.send({token:jwtToken});
+    res.send({token:jwtToken,message:"You are logged in."});
 }
 
 // validates jwt token
@@ -22,7 +22,7 @@ function checkJWTToken(req, res, next) {
       if (error) {
         res.send({ message: "Invalid Token" });
       } else {
-        req.username = data.username;
+        req.email = data.email;
         req.permissions = data.permissions;
         next();
       }
@@ -30,6 +30,42 @@ function checkJWTToken(req, res, next) {
   } else {
     res.send({ message: "You are not logged in" });
   }
+}
+
+function checkReceivingPermission(req, res, next){
+  req.permissions.map((element)=>{
+      if (element === "/admin" || element === "/receiving"){
+          return next();
+      };
+      res.send({message:"You don't hve permission to view this page."})
+  })
+}
+
+function checkProductionPermission(req, res, next){
+  req.permissions.map((element)=>{
+      if (element === "/admin" || element === "/production"){
+          return next();
+      };
+      res.send({message:"You don't hve permission to view this page."})
+  })
+}
+
+function checkDispatchPermission(req, res, next){
+  req.permissions.map((element)=>{
+      if (element === "/admin" || element === "/dispatch"){
+          return next();
+      };
+      res.send({message:"You don't hve permission to view this page."})
+  })
+}
+
+function checkAdminPermission(req, res, next){
+  req.permissions.map((element)=>{
+      if (element === "/admin"){
+          return next();
+      };
+      res.send({message:"You don't hve permission to view this page."})
+  })
 }
 
 // changes user password in users collection
@@ -69,5 +105,9 @@ module.exports = {
   checkJWTToken,
   changePasswordVerification,
   loginUser,
-  checkUserName
+  checkUserName,
+  checkReceivingPermission,
+  checkAdminPermission,
+  checkDispatchPermission,
+  checkProductionPermission
 };

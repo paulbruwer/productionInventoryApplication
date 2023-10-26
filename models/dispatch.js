@@ -10,8 +10,12 @@ let dispatchSchema = mongoose.Schema({
         type: Object,
         required: true
     },
+    user: {
+        type: String,
+        required: true
+    },
     date: {
-        type: Date,
+        type: String,
         require: true
     }
 });

@@ -10,6 +10,10 @@ let finishedGoodsSchema = mongoose.Schema({
         type: Number,
         required: true
     },
+    composition: {
+        type: Object,
+        required: true
+    },
     date: {
         type: Date,
         require: true

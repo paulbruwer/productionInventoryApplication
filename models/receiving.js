@@ -15,7 +15,7 @@ let receivingSchema = mongoose.Schema({
         required: true
     },
     date: {
-        type: Date,
+        type: String,
         require: true
     }
 });

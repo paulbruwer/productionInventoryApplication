@@ -2,8 +2,7 @@ const Users = require("../models/users");
 
 exports.matchPassword = async (req, res, next) => {
     try {
-        console.log('fetching');
-        const result = await Users.find({username:req.body.username});
+        const result = await Users.find({email:req.body.email});
         if (result[0].password === req.body.password) {
             req.permissions = result[0].permissions
             next()

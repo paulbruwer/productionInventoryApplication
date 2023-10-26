@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "client": "npm start --prefix ./frontend",
+    "server": "nodemon app.js",
+    "dev": "concurrently \"npm run client\" \"npm run server\""
   },
   "dependencies": {
     "body-parser": "^1.20.2",
