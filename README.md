@@ -7,7 +7,7 @@ The app logs:
     Adding finished from production floor to stock
     and finished good dispatched from the stock.
 
-**Installation Guide For dev version**
+# Installation Guide For dev version
 
     - pull repo from github
     - in command line navigate to repo location
@@ -20,9 +20,26 @@ The app logs:
 For API security JSON WEB TOKEN is used with encryption key "secretKey".
 If you want to change this key navigate to /routes/middelware.js and change the key in both LoginUser and CheckJWTToken
 
-**Guide for use**
+# Guide for use
 
-From the home screen, log into the application. (test account username: paul@mail.com, password: 1234)
+## Login
+    From the home screen, log into the application. 
+    test accounts:
+        (admin) username: paul@mail.com, password: 1234
+        (receiving) username: chris@mail.com, password: abcd
+        (production) username: mark@mail.com, password: m@rk
+        (dispatch) username: jennifer@mail.com, password: pass
+
+    All users log in using the login page. After being logged in, depending on the user's permissions, 
+    the user will only be able to view information from the page they are allowed access. 
+
+    For example. 
+        Mark has only permission to view the production page.
+        He can view production logs and add new batches to this database collection.
+        He will not be able to view information on any other page, nor will he be able to submit any
+        data on those pages on their respective database collections.
+    
+    Admin users can view and manipulate all pages
 
 Navigate the pages of choice using the tabs above:
 
@@ -53,7 +70,7 @@ Admin
     - click delete
     - on the right navigate through all the collections of the database you want to view
 
-**System architecture**:
+# System architecture:
 
 This application will be developed using the MERN-stack, i.e. MongoDB, Express, React(Create React app), Node.
 Styled with react-bootstrap and css
@@ -123,7 +140,7 @@ React front-end features:
     dispatch page
     admin page
 
-**User Stories**
+# User Stories
 
 Admin: 
     - I would like to be able to erase any mistakes made by other users of the app
@@ -140,7 +157,7 @@ Good receiving:
 Dispatch team:
     - I need a simple way of keeping record of all items leaving the stores
 
-**System requirements**
+# System requirements
 
 Functional Requirements:
 
