@@ -1,6 +1,6 @@
-var express = require('express');
-const { matchPassword } = require('../controllers/users.controller');
-const { loginUser } = require('./middelware');
+var express = require("express");
+const { matchPassword } = require("../controllers/users.controller");
+const { loginUser } = require("./middelware");
 var router = express.Router();
 
 //define login route and behavior

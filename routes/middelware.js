@@ -3,15 +3,15 @@ let jwt = require("jsonwebtoken");
 // if password matches the in the database document, sets username and password to payload
 // and creates a jwt token
 function loginUser(req, res) {
-    let jwtToken = jwt.sign(
-        {
-            email: req.body.email,
-            permissions: req.permissions,
-        },
-        "secretKey",
-        { expiresIn: "1h" }
-        );
-    res.send({token:jwtToken,message:"You are logged in."});
+  let jwtToken = jwt.sign(
+    {
+      email: req.body.email,
+      permissions: req.permissions,
+    },
+    "secretKey",
+    { expiresIn: "1h" }
+  );
+  res.send({ token: jwtToken, message: "You are logged in." });
 }
 
 // validates jwt token
@@ -33,43 +33,43 @@ function checkJWTToken(req, res, next) {
 }
 
 //check the user has permissions for this route
-function checkReceivingPermission(req, res, next){
-  req.permissions.map((element)=>{
-      if (element === "/admin" || element === "/receiving"){
-          return next();
-      };
-      res.send({message:"You don't hve permission to view this page."})
-  })
+function checkReceivingPermission(req, res, next) {
+  req.permissions.map((element) => {
+    if (element === "/admin" || element === "/receiving") {
+      return next();
+    }
+    res.send({ message: "You don't hve permission to view this page." });
+  });
 }
 
 //check the user has permissions for this route
-function checkProductionPermission(req, res, next){
-  req.permissions.map((element)=>{
-      if (element === "/admin" || element === "/production"){
-          return next();
-      };
-      res.send({message:"You don't hve permission to view this page."})
-  })
+function checkProductionPermission(req, res, next) {
+  req.permissions.map((element) => {
+    if (element === "/admin" || element === "/production") {
+      return next();
+    }
+    res.send({ message: "You don't hve permission to view this page." });
+  });
 }
 
 //check the user has permissions for this route
-function checkDispatchPermission(req, res, next){
-  req.permissions.map((element)=>{
-      if (element === "/admin" || element === "/dispatch"){
-          return next();
-      };
-      res.send({message:"You don't hve permission to view this page."})
-  })
+function checkDispatchPermission(req, res, next) {
+  req.permissions.map((element) => {
+    if (element === "/admin" || element === "/dispatch") {
+      return next();
+    }
+    res.send({ message: "You don't hve permission to view this page." });
+  });
 }
 
 //check the user has permissions for this route
-function checkAdminPermission(req, res, next){
-  req.permissions.map((element)=>{
-      if (element === "/admin"){
-          return next();
-      };
-      res.send({message:"You don't hve permission to view this page."})
-  })
+function checkAdminPermission(req, res, next) {
+  req.permissions.map((element) => {
+    if (element === "/admin") {
+      return next();
+    }
+    res.send({ message: "You don't hve permission to view this page." });
+  });
 }
 
 // changes user password in users collection
@@ -99,9 +99,9 @@ function checkUserName(req, res, next) {
   const suffix = username.slice(-10);
   console.log(suffix);
   if (suffix !== "@gmail.com") {
-    res.status(403).send({message:"Username must end with @gmail.com"});
-  }else{
-    next()
+    res.status(403).send({ message: "Username must end with @gmail.com" });
+  } else {
+    next();
   }
 }
 
@@ -113,5 +113,5 @@ module.exports = {
   checkReceivingPermission,
   checkAdminPermission,
   checkDispatchPermission,
-  checkProductionPermission
+  checkProductionPermission,
 };

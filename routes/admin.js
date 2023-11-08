@@ -1,22 +1,44 @@
-var express = require('express');
+var express = require("express");
 
 //import controllers
-const { deleteDispatch } = require('../controllers/dispatch.controller');
-const { deleteReceiving } = require('../controllers/receiving.controller');
-const { deleteProduction } = require('../controllers/manufacture.controller');
-const { getRawMaterials } = require('../controllers/rawMaterials.controller');
-const { getFinishedGoods } = require('../controllers/finishedGoods.controller');
+const { deleteDispatch } = require("../controllers/dispatch.controller");
+const {
+  deleteReceiving,
+  getReceivingItem,
+  editReceivingItem,
+} = require("../controllers/receiving.controller");
+const {
+  deleteProduction,
+  getProductionItem,
+  editProductionItem,
+} = require("../controllers/manufacture.controller");
+const {
+  getRawMaterials,
+  checkIfMaterialExists,
+} = require("../controllers/rawMaterials.controller");
+const {
+  getFinishedGoods,
+  checkIfGoodsExists,
+} = require("../controllers/finishedGoods.controller");
 var router = express.Router();
 
 //define all admin route behavior
-router.delete("/dispatch",deleteDispatch)
+router.delete("/dispatch", deleteDispatch);
 
-router.delete("/receiving",deleteReceiving)
+router.delete("/receiving", deleteReceiving);
 
-router.delete("/production",deleteProduction)
+router.post("/receiving", getReceivingItem);
 
-router.get("/rawMaterials", getRawMaterials)
+router.put("/receiving", checkIfMaterialExists, editReceivingItem);
 
-router.get("/finishedGoods", getFinishedGoods)
+router.delete("/production", deleteProduction);
+
+router.post("/production", getProductionItem);
+
+router.put("/production", checkIfGoodsExists, editProductionItem);
+
+router.get("/rawMaterials", getRawMaterials);
+
+router.get("/finishedGoods", getFinishedGoods);
 
 module.exports = router;
