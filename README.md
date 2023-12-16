@@ -1,7 +1,7 @@
 # Description
 
 Production inventory application.
-This app is meant to easy the recording and tracking of goods production in a small factory environment.
+This is an easy to use and compact web application designed to simplify the tracking of goods production in a small production environment.
 
 The app logs:
 incoming raw materials.
