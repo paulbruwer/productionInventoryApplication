@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "padding": "10px",
+    }
+  }
+>
+  <div
+    className="navbar-border"
+  >
+    <nav
+      className="navbar navbar navbar-expand navbar-light bg-dark"
+      data-bs-theme="dark"
+    >
+      <div
+        className="container"
+      >
+        <span
+          className="navbar-brand"
+        >
+          <a
+            className="header-link"
+            href="/"
+            onClick={[Function]}
+          >
+            Production Inventory Application
+          </a>
+        </span>
+        <div
+          className="navbar-nav"
+          onKeyDown={[Function]}
+        >
+          <a
+            className="header-link"
+            href="/receiving"
+            onClick={[Function]}
+          >
+            Receiving
+          </a>
+          <a
+            className="header-link"
+            href="/production"
+            onClick={[Function]}
+          >
+            Production
+          </a>
+          <a
+            className="header-link"
+            href="/dispatch"
+            onClick={[Function]}
+          >
+            Dispatch
+          </a>
+          <a
+            className="header-link"
+            href="/admin"
+            onClick={[Function]}
+          >
+            Admin
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <style>
+    
+            .navbar-border{
+                border: solid 1px #0063a3;
+                border-radius: 10px;
+            }
+            .navbar{
+                background-color: #0e416c !important;
+                border-radius: 10px !important;
+            }
+            .header-link {
+                color: rgb(255,255,255,0.7);
+                text-decoration: none;
+                padding-left: 5%;
+                font-weight: 600;
+            }
+        
+  </style>
+</div>
+`;
